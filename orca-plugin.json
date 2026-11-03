@@ -4,6 +4,8 @@
   "name": "OpenCode TPS",
   "version": "0.4.0",
   "description": "Shows how fast an agent is generating in Orca's status bar: tokens per second for the turn that just finished, or a live estimate while OpenCode writes. Follows whichever of OpenCode and pi was active last.",
+  "license": "MIT",
+  "repository": "https://github.com/reisen7/orca-tps",
   "engines": {
     "orca": ">=1.4.248"
   },
