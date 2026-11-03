@@ -1,0 +1,53 @@
+{
+  "manifestVersion": 2,
+  "id": "opencode-tps",
+  "name": "OpenCode TPS",
+  "version": "0.4.0",
+  "description": "Shows how fast an agent is generating in Orca's status bar: tokens per second for the turn that just finished, or a live estimate while OpenCode writes. Follows whichever of OpenCode and pi was active last.",
+  "engines": {
+    "orca": ">=1.4.248"
+  },
+  "execution": "trusted-worker",
+  "pluginApi": 1,
+  "main": "src/worker.ts",
+  "contributes": {
+    "statusBarItems": [
+      {
+        "id": "tps",
+        "text": "tok/s",
+        "icon": "gauge",
+        "tone": "neutral",
+        "tooltip": "Tokens per second, from OpenCode or pi"
+      }
+    ],
+    "events": [
+      {
+        "on": "agent.status.changed"
+      }
+    ],
+    "settings": [
+      {
+        "key": "databasePath",
+        "title": "OpenCode database",
+        "description": "Path to opencode.db. Leave empty for ~/.local/share/opencode/opencode.db (or $XDG_DATA_HOME/opencode/opencode.db).",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "key": "piSessionsPath",
+        "title": "pi sessions folder",
+        "description": "Folder pi writes its session files to. Leave empty for ~/.pi/agent/sessions.",
+        "type": "string",
+        "default": ""
+      }
+    ]
+  },
+  "capabilities": [
+    {
+      "kind": "agent:read"
+    },
+    {
+      "kind": "settings:own"
+    }
+  ]
+}
